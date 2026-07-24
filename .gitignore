@@ -12,5 +12,6 @@ Thumbs.db
 *.elf
 *.map
 *.o
+.claude/
 CLAUDE.md
 installer/
