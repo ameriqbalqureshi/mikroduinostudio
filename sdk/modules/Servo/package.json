@@ -1,0 +1,10 @@
+{
+  "name": "Servo",
+  "version": "1.0.0",
+  "description": "Hardware PWM servo driver (Timer1, 2 channels, 0.5 µs resolution)",
+  "author": "MikroDuino",
+  "license": "MIT",
+  "dependencies": [],
+  "targets": ["avr"],
+  "keywords": ["servo", "pwm", "timer1", "robotics"]
+}

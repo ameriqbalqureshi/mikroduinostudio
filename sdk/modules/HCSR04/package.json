@@ -1,0 +1,10 @@
+{
+  "name": "HCSR04",
+  "version": "1.0.0",
+  "description": "HC-SR04 ultrasonic distance sensor driver",
+  "author": "MikroDuino",
+  "license": "MIT",
+  "dependencies": [],
+  "targets": ["avr"],
+  "keywords": ["ultrasonic", "distance", "sensor", "hcsr04"]
+}

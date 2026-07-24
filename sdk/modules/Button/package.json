@@ -1,0 +1,10 @@
+{
+  "name": "Button",
+  "version": "1.0.0",
+  "description": "Push button with debounce, long press, click and double-click event detection",
+  "author": "MikroDuino",
+  "license": "MIT",
+  "dependencies": [],
+  "targets": ["avr"],
+  "keywords": ["button", "push-button", "debounce", "long-press", "double-click", "input", "ui"]
+}

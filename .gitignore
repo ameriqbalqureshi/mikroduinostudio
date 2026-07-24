@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+out/
+.cache/
+*.tsbuildinfo
+*.log
+.env
+.DS_Store
+Thumbs.db
+*.hex
+*.elf
+*.map
+*.o
+CLAUDE.md
+installer/

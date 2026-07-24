@@ -1,0 +1,10 @@
+{
+  "name": "Pulse",
+  "version": "1.0.0",
+  "description": "On-demand elapsed time (Stopwatch) and GPIO pulse measurement (PulseMeter) using Timer1; no background interrupts unless opted in",
+  "author": "MikroDuino",
+  "license": "MIT",
+  "dependencies": [],
+  "targets": ["avr"],
+  "keywords": ["timing", "stopwatch", "pulse", "frequency", "period", "measurement", "timer"]
+}

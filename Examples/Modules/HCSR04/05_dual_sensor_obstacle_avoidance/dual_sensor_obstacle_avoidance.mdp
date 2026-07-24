@@ -1,0 +1,24 @@
+{
+  "projectName": "HCSR04 Dual Sensor Obstacle Avoidance",
+  "version": "1.0.0",
+  "target": {
+    "mcu": "ATmega328P",
+    "clock": 16000000
+  },
+  "programmer": {
+    "type": "ARDUINO",
+    "port": "COM3",
+    "baudRate": 115200
+  },
+  "build": {
+    "optimization": "O2",
+    "warnings": "all",
+    "cppStandard": "c++17",
+    "includeDirs": [
+      "../../../../sdk/modules/HCSR04/include"
+    ]
+  },
+  "sourceFiles": [
+    "src/main.cpp"
+  ]
+}

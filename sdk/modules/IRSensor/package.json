@@ -1,0 +1,10 @@
+{
+  "name": "IRSensor",
+  "version": "1.0.0",
+  "description": "Single digital or analog IR reflectance / proximity sensor (TCRT5000, FC-51, QRE1113)",
+  "author": "MikroDuino",
+  "license": "MIT",
+  "dependencies": [],
+  "targets": ["avr"],
+  "keywords": ["ir", "infrared", "proximity", "sensor", "robotics"]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Stepper",
+  "version": "1.0.0",
+  "description": "Blocking step/direction driver for A4988, DRV8825, TMC2208 and compatible controllers",
+  "author": "MikroDuino",
+  "license": "MIT",
+  "dependencies": [],
+  "targets": ["avr"],
+  "keywords": ["stepper", "motor", "a4988", "drv8825", "robotics"]
+}

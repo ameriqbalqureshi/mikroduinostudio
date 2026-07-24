@@ -1,0 +1,10 @@
+{
+  "name": "IRRemote",
+  "version": "1.0.0",
+  "description": "NEC protocol IR remote control receiver (TSOP38238 / VS1838B) — INT0/INT1 + Timer2",
+  "author": "MikroDuino",
+  "license": "MIT",
+  "dependencies": [],
+  "targets": ["avr"],
+  "keywords": ["ir", "infrared", "nec", "remote-control", "receiver"]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "DS3231",
+  "version": "1.0.0",
+  "description": "DS3231 precision RTC with temperature sensor over I2C",
+  "author": "MikroDuino",
+  "license": "MIT",
+  "dependencies": [],
+  "targets": ["avr"],
+  "keywords": ["rtc", "clock", "i2c", "ds3231", "temperature"]
+}

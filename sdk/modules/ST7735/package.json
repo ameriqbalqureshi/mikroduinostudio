@@ -1,0 +1,12 @@
+{
+  "name": "ST7735",
+  "version": "1.0.0",
+  "description": "ST7735 SPI color TFT display driver (128x160 / 128x128 / 160x80, RGB565, no framebuffer)",
+  "author": "MikroDuino",
+  "license": "MIT",
+  "dependencies": [],
+  "targets": ["avr"],
+  "keywords": ["tft", "display", "color", "st7735", "spi", "128x160", "rgb565"],
+  "sources": ["src/ST7735.cpp"],
+  "includes": ["include/"]
+}

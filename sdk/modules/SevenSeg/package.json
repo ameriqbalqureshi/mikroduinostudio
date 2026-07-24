@@ -1,0 +1,10 @@
+{
+  "name": "SevenSeg",
+  "version": "1.0.0",
+  "description": "7-segment LED display driver: single-digit and N-digit multiplexed with manual, ISR, or Timer2 auto-refresh",
+  "author": "MikroDuino",
+  "license": "MIT",
+  "dependencies": [],
+  "targets": ["avr"],
+  "keywords": ["display", "seven-segment", "7-segment", "multiplexed", "led", "numeric"]
+}

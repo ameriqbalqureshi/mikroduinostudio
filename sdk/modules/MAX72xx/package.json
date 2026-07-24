@@ -1,0 +1,10 @@
+{
+  "name": "MAX72xx",
+  "version": "1.0.0",
+  "description": "MAX7219/MAX7221 LED dot-matrix display wrapper (requires MD_MAX72XX library in ~/.mikroduino/libraries/)",
+  "author": "MikroDuino",
+  "license": "MIT",
+  "dependencies": ["MD_MAX72XX"],
+  "targets": ["avr"],
+  "keywords": ["led", "matrix", "max7219", "max7221", "display", "scroll", "dot-matrix"]
+}

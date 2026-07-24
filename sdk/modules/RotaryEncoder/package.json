@@ -1,0 +1,10 @@
+{
+  "name": "RotaryEncoder",
+  "version": "1.0.0",
+  "description": "Interrupt-driven quadrature rotary encoder with optional push button (PCINT, any pin)",
+  "author": "MikroDuino",
+  "license": "MIT",
+  "dependencies": [],
+  "targets": ["avr"],
+  "keywords": ["encoder", "rotary", "quadrature", "pcint", "input", "ui"]
+}
