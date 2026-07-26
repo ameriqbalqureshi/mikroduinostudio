@@ -330,13 +330,14 @@ User clicks "Build"
 
 ## 8. Supported MCU Definitions
 
-| MCU         | Flash  | RAM   | EEPROM | USART | SPI | I2C | ADC | Timers |
-|-------------|--------|-------|--------|-------|-----|-----|-----|--------|
-| ATmega328P  | 32 KB  | 2 KB  | 1 KB   | 1     | 1   | 1   | 6ch | 3      |
-| ATmega32    | 32 KB  | 2 KB  | 1 KB   | 1     | 1   | 1   | 8ch | 3      |
-| ATmega16    | 16 KB  | 1 KB  | 512 B  | 1     | 1   | 1   | 8ch | 3      |
-| ATmega64    | 64 KB  | 4 KB  | 2 KB   | 2     | 1   | 1   | 8ch | 4      |
-| ATmega128   | 128 KB | 4 KB  | 4 KB   | 2     | 1   | 1   | 8ch | 4      |
+| MCU         | Flash  | RAM   | EEPROM | USART | SPI | I2C | ADC  | Timers |
+|-------------|--------|-------|--------|-------|-----|-----|------|--------|
+| ATmega328P  | 32 KB  | 2 KB  | 1 KB   | 1     | 1   | 1   | 6ch  | 3      |
+| ATmega32    | 32 KB  | 2 KB  | 1 KB   | 1     | 1   | 1   | 8ch  | 3      |
+| ATmega16    | 16 KB  | 1 KB  | 512 B  | 1     | 1   | 1   | 8ch  | 3      |
+| ATmega64    | 64 KB  | 4 KB  | 2 KB   | 2     | 1   | 1   | 8ch  | 4      |
+| ATmega128   | 128 KB | 4 KB  | 4 KB   | 2     | 1   | 1   | 8ch  | 4      |
+| ATmega2560  | 256 KB | 8 KB  | 4 KB   | 4     | 1   | 1   | 16ch | 6      |
 
 ---
 

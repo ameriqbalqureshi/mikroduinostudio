@@ -191,6 +191,19 @@ On Arduino Nano, PD0/PD1 are connected to the CH340 USB-serial chip on-board. Op
 | USART1 TX | PD3 |
 | USART1 RX | PD2 |
 
+### ATmega2560
+
+| Signal | Pin | Arduino Mega label |
+|--------|-----|---------------------|
+| USART0 TX | PE1 | D1 / TX0 |
+| USART0 RX | PE0 | D0 / RX0 |
+| USART1 TX | PD3 | D18 / TX1 |
+| USART1 RX | PD2 | D19 / RX1 |
+| USART2 TX | PH1 | D16 / TX2 |
+| USART2 RX | PH0 | D17 / RX2 |
+| USART3 TX | PJ1 | D14 / TX3 |
+| USART3 RX | PJ0 | D15 / RX3 |
+
 ---
 
 ## 5. Global Instances
@@ -207,7 +220,9 @@ The SDK defines these global instances (as `static` variables in the header — 
 | Instance | Available on |
 |----------|-------------|
 | `USART0` | All supported MCUs |
-| `USART1` | ATmega64, ATmega128 |
+| `USART1` | ATmega64, ATmega128, ATmega2560 |
+| `USART2` | ATmega2560 |
+| `USART3` | ATmega2560 |
 
 Because the instances are `static` in the header, they are defined once per translation unit. For the single-source-file project structure used by MikroDuino examples, this is exactly one instance per project. No `.cpp` file needs to be added to `sourceFiles`.
 
@@ -920,6 +935,10 @@ AVR-libc defines different vector names per MCU family. Use the correct name or 
 | ATmega64 (USART1) | `USART1_RX_vect` | `USART1_TX_vect` | `USART1_UDRE_vect` |
 | ATmega128 (USART0) | `USART0_RX_vect` | `USART0_TX_vect` | `USART0_UDRE_vect` |
 | ATmega128 (USART1) | `USART1_RX_vect` | `USART1_TX_vect` | `USART1_UDRE_vect` |
+| ATmega2560 (USART0) | `USART0_RX_vect` | `USART0_TX_vect` | `USART0_UDRE_vect` |
+| ATmega2560 (USART1) | `USART1_RX_vect` | `USART1_TX_vect` | `USART1_UDRE_vect` |
+| ATmega2560 (USART2) | `USART2_RX_vect` | `USART2_TX_vect` | `USART2_UDRE_vect` |
+| ATmega2560 (USART3) | `USART3_RX_vect` | `USART3_TX_vect` | `USART3_UDRE_vect` |
 
 ---
 

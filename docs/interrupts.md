@@ -73,7 +73,7 @@ Connecting your button to any other pin will not trigger an interrupt.
 | INT1   | PD3 | Port D, bit 3 |
 | INT2   | PB2 | Port B, bit 2 |
 
-### ATmega64 / ATmega128
+### ATmega64 / ATmega128 / ATmega2560
 
 | Source | Pin  | Port bit |
 |--------|------|----------|
@@ -85,6 +85,12 @@ Connecting your button to any other pin will not trigger an interrupt.
 | INT5   | PE5  | Port E, bit 5 |
 | INT6   | PE6  | Port E, bit 6 |
 | INT7   | PE7  | Port E, bit 7 |
+
+> Unlike ATmega32/16 (where INT2's sense is a single bit in `MCUCSR` — only
+> falling/rising edge can be distinguished, not level), ATmega64/128/2560 give
+> INT2 a full 2-bit sense field in `EICRA`, same as INT0/INT1, so all four
+> `IntSense` values work. `InterruptManager::setSense()` picks the right
+> register for the target MCU automatically.
 
 > Configure the pin as an input (with or without pull-up) using `GPIO::inputPullup()`
 > before attaching the interrupt. The interrupt controller reads the physical pin
@@ -102,8 +108,12 @@ Selects which hardware interrupt line to use.
 enum class IntSource : uint8_t {
     INT0,   // always available
     INT1,   // always available
-    INT2,   // ATmega32/16 only
-    // INT3–INT7 on ATmega64/128
+    INT2,   // ATmega32/16/64/128/2560
+    INT3,   // ATmega64/128/2560 only
+    INT4,   // ATmega64/128/2560 only
+    INT5,   // ATmega64/128/2560 only
+    INT6,   // ATmega64/128/2560 only
+    INT7,   // ATmega64/128/2560 only
 };
 ```
 

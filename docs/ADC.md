@@ -850,7 +850,7 @@ uint16_t result12 = sum >> 2;   // divide by 4 to get 12-bit result (0–4092)
 
 ## 10. MCU Differences
 
-The SDK supports five MCUs via `platform.hpp`. ADC-relevant differences:
+The SDK supports six MCUs via `platform.hpp`. ADC-relevant differences:
 
 | MCU | Channels | Internal reference | ADC pins |
 |---|---|---|---|
@@ -859,6 +859,18 @@ The SDK supports five MCUs via `platform.hpp`. ADC-relevant differences:
 | ATmega16 | 8 (ADC0–ADC7) | 2.56 V | PA0–PA7 |
 | ATmega64 | 8 (ADC0–ADC7) | 2.56 V | PF0–PF7 |
 | ATmega128 | 8 (ADC0–ADC7) | 2.56 V | PF0–PF7 |
+| ATmega2560 | 16 (ADC0–ADC15) | 1.1 V / 2.56 V | ADC0–ADC7 on PF0–PF7, ADC8–ADC15 on PK0–PK7 |
+
+### ADC8–ADC15 on ATmega2560
+
+`ADMUX`'s MUX4:0 bits only address 16 combinations, enough for ADC0–ADC15 directly —
+but the ADC hardware also reuses part of that encoding space for internal references
+and differential-gain channels on other MCU families. ATmega2560 resolves this with an
+extra **MUX5** bit in `ADCSRB` that selects between the two 8-channel banks (ADC0–7 on
+PF0–7 vs ADC8–15 on PK0–7). `ADCDriver::selectChannel()` sets/clears `MUX5` from bit 5
+of the requested channel automatically — `ADC_Driver.read(12)` just works, no extra
+call needed. On MCUs without a `MUX5` bit, that part of `selectChannel()` compiles out
+via `#if defined(MUX5)` and has no effect.
 
 ### ADC6 and ADC7 on ATmega328P
 

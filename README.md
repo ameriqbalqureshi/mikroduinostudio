@@ -1,7 +1,7 @@
 # MikroDuino
 
 MikroDuino is an AVR development environment for the ATmega family
-(`ATmega328P`, `ATmega32`, `ATmega16`, `ATmega64`, `ATmega128`). It has two
+(`ATmega328P`, `ATmega32`, `ATmega16`, `ATmega64`, `ATmega128`, `ATmega2560`). It has two
 parts: a desktop **IDE** (`apps/ide/`, Python/PyQt6) for writing, building,
 and flashing firmware, and a C++17 **SDK** (`sdk/`) that wraps AVR hardware
 registers into readable classes plus a set of reusable module drivers for
@@ -104,7 +104,7 @@ IDE via **Help → Documentation…**.
 
 ## Supported MCUs
 
-`ATmega328P`, `ATmega32`, `ATmega16`, `ATmega64`, `ATmega128`.
+`ATmega328P`, `ATmega32`, `ATmega16`, `ATmega64`, `ATmega128`, `ATmega2560` (Arduino Mega).
 Definitions: `packages/shared/src/constants/mcu-definitions.ts` (TypeScript
 packages) and `builder.py::MCU_MAP` (Python IDE).
 

@@ -3,12 +3,22 @@
 ## Overview
 
 The ATmega family includes dedicated **hardware timer/counter peripherals** that count
-independently of the CPU. The MikroDuino SDK exposes them through two driver classes:
+independently of the CPU. The MikroDuino SDK exposes them through driver classes —
+which ones exist depends on the target MCU (`MD_TIMER_COUNT`):
 
-| Driver | Timer | Width | Global instance |
-|--------|-------|-------|-----------------|
-| `Timer0Driver` | Timer0 | 8-bit | `Timer0` |
-| `Timer1Driver` | Timer1 | 16-bit | `Timer1` |
+| Driver | Timer | Width | Global instance | Available on |
+|--------|-------|-------|-----------------|--------------|
+| `Timer0Driver` | Timer0 | 8-bit | `Timer0` | All supported MCUs |
+| `Timer1Driver` | Timer1 | 16-bit | `Timer1` | All supported MCUs |
+| `Timer2Driver` | Timer2 | 8-bit, async-capable | `Timer2` | All supported MCUs |
+| `Timer3Driver` | Timer3 | 16-bit | `Timer3` | ATmega64, ATmega128, ATmega2560 |
+| `Timer4Driver` | Timer4 | 16-bit | `Timer4` | ATmega2560 |
+| `Timer5Driver` | Timer5 | 16-bit | `Timer5` | ATmega2560 |
+
+`Timer3Driver`/`Timer4Driver`/`Timer5Driver` are the same template as `Timer1Driver`
+(`Timer16Driver<N>`, in `timer.hpp`) — identical API, just wired to a different set of
+hardware registers. Everything documented below for `Timer1` applies equally to
+`Timer3`/`Timer4`/`Timer5` with the instance name swapped.
 
 Include:
 ```cpp
@@ -85,8 +95,15 @@ gives you a periodic interrupt at a rate determined entirely by the prescaler.
 | Timer1 | 16-bit | `TCNT1` | `OCR1A`, `OCR1B`, `ICR1` | 65535 | `TIMER1_COMPA_vect`, `TIMER1_COMPB_vect`, `TIMER1_OVF_vect`, `TIMER1_CAPT_vect` |
 | Timer2 | 8-bit async | `TCNT2` | `OCR2A`, `OCR2B` | 255 | `TIMER2_COMPA_vect`, `TIMER2_COMPB_vect`, `TIMER2_OVF_vect` |
 
-> Timer2 and (on ATmega64/128) Timer3/4 are **not yet exposed** by the SDK.
-> Use Timer0 and Timer1 for all current projects.
+### Timer summary (ATmega64 / ATmega128 / ATmega2560)
+
+Same shape as above, plus Timer3 (ATmega64/128/2560) and Timer4/Timer5 (ATmega2560
+only) — each a full 16-bit timer identical to Timer1 with `OCRnA`/`OCRnB`/`ICRn`,
+`TIMERn_COMPA_vect`/`TIMERn_COMPB_vect`/`TIMERn_OVF_vect`/`TIMERn_CAPT_vect`.
+
+> `Timer1Driver.compareC`/`OCR1C` (and the Timer3/4/5 equivalents) exist in hardware
+> on these MCUs but are **not exposed** by the SDK — only compare A/B are wired up,
+> same as Timer1 on ATmega328P.
 
 ### Prescaler reference (ATmega328P @ 16 MHz)
 
@@ -102,6 +119,10 @@ gives you a periodic interrupt at a rate determined entirely by the prescaler.
 
 OVF periods listed are for **Normal mode** (full 8-bit or 16-bit count before wrap).
 CTC mode resets at OCRnA, so the effective period is shorter.
+
+`DIV32` and `DIV128` are **Timer2-only** taps (its prescaler has two extra steps
+that Timer0/1/3/4/5 don't have in hardware); passing them to any other timer's
+`prescaler()` is treated as `Off`.
 
 ### ISR vector names
 
@@ -206,9 +227,10 @@ Output: ██░░░░░░░░██████░░░░░░░░
 | Feature | Status |
 |---------|--------|
 | Timer0 Normal, CTC, FastPWM, PhaseCorrectPWM | Implemented (`Timer0`) |
-| Timer1 Normal, CTC, FastPWM, PhaseCorrectPWM | Implemented (`Timer1`) |
-| Timer1 input capture | Registers accessible; no high-level API |
-| Timer2 / Timer3 / Timer4 | Planned |
+| Timer1/3/4/5 Normal, CTC, FastPWM, PhaseCorrectPWM | Implemented (`Timer1`, and `Timer3`/`Timer4`/`Timer5` where present) |
+| Timer2 Normal, CTC, FastPWM, PhaseCorrectPWM, async clocking | Implemented (`Timer2`) |
+| Timer1/3/4/5 input capture | Registers accessible; no high-level API |
+| Timer1/3/4/5 compare C (`OCRnC`) | Not exposed — only compare A/B |
 | Output compare pin output (OC0A, OC1B, etc.) | Available via PWM driver; not wired in timer driver |
 
 ---

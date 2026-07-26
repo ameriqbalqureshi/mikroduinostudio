@@ -45,6 +45,18 @@ portable across all supported MCUs.
 All ports available: `PA0`–`PA7`, `PB0`–`PB7`, `PC0`–`PC7`, `PD0`–`PD7`,
 `PE0`–`PE7`, `PF0`–`PF7`, `PG0`–`PG4`.
 
+### ATmega2560
+
+`PA0`–`PA7`, `PB0`–`PB7`, `PC0`–`PC7`, `PD0`–`PD7`, `PE0`–`PE7`, `PF0`–`PF7`,
+`PG0`–`PG5` (this MCU has a 6-bit Port G, unlike the 5-bit `PG0`–`PG4` on
+ATmega64/128), plus four ports the smaller MCUs don't have at all:
+`PH0`–`PH7`, `PJ0`–`PJ7`, `PK0`–`PK7`, `PL0`–`PL7`.
+
+> Adding ports beyond G required widening the pin-encoding scheme from a 3-bit
+> to a 4-bit port field (see `gpio.hpp`'s header comment). Existing pin
+> constants for ports A–G keep the same numeric value, so this is not a
+> breaking change for existing code.
+
 ---
 
 ## API Reference
