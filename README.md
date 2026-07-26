@@ -16,6 +16,19 @@ New to the project? Start with [`docs/getting-started.md`](docs/getting-started.
 
 ---
 
+## Download
+
+**[Download MikroDuino Studio 1.2 for Windows](https://github.com/ameriqbalqureshi/mikroduinostudio/releases/download/MikroDuinoStudio/MikroDuinoStudio-Setup-1.2.exe)**
+— a single self-contained installer (~74 MB) bundling the IDE, the avr-gcc
+and avrdude toolchains, the SDK, docs, and all examples. No separate
+toolchain install or PATH setup required. See all releases on the
+[Releases page](https://github.com/ameriqbalqureshi/mikroduinostudio/releases).
+
+To build the installer yourself instead, see [`packaging/`](packaging/)
+(`build.ps1` + `installer.iss`, requires PyInstaller and Inno Setup 6).
+
+---
+
 ## Guide documents (`docs/`)
 
 | Document | Covers |
