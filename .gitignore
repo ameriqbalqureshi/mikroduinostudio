@@ -15,3 +15,20 @@ Thumbs.db
 .claude/
 CLAUDE.md
 installer/
+
+# Only documentation and examples are tracked in this repo.
+# Everything below stays local (or lives in a separate repo) and is
+# intentionally excluded from version control here.
+/apps/
+/packages/
+/tests/
+/tools/
+/packaging/
+/sdk/core/
+/sdk/compat/
+sdk/modules/*/*
+!sdk/modules/*/README.md
+/package.json
+/package-lock.json
+/tsconfig.base.json
+/.eslintrc.json
