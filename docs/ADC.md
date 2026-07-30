@@ -445,17 +445,10 @@ Starts continuous automatic conversions on a single fixed channel. Each conversi
 
 ```cpp
 ADMUX  = (ADMUX & 0xF0) | (channel & 0x0F);  // select channel
-ADCSRB = ADCSRB | (1 << 0);                  // ADTS0 = 1 (see note)
+ADCSRB &= ~(0x07 << ADTS0);                  // ADTS2:0 = 000 -> free running
 ADCSRA |= (1 << ADATE);                       // enable auto-trigger
 ADCSRA |= (1 << ADSC);                        // start first conversion
 ```
-
-> **Implementation note:** The SDK sets ADCSRB bit 0 (ADTS0 = 1), which according to the datasheet selects "Analog Comparator" as the auto-trigger source (ADTS = 001), not free-running (ADTS = 000). In practice, when the Analog Comparator is not actively used, this behaves similarly to free-running because the comparator output is undefined and toggles the trigger spontaneously. For **guaranteed** free-running operation, clear bits 2:0 of ADCSRB before calling this function:
->
-> ```cpp
-> ADCSRB &= ~0x07;                // ADTS = 000 → true free running
-> ADC_Driver.beginFreeRunning(7);
-> ```
 
 **Notes:**
 
@@ -773,9 +766,6 @@ ADC_Driver.setReference(ADCRef::AVCC);  // restore
 
 ```cpp
 ADC_Driver.begin();
-
-// Clear ADTS bits for guaranteed free-running (ADTS = 000)
-ADCSRB &= ~0x07;
 ADC_Driver.beginFreeRunning(7);         // potentiometer on A7
 
 while (true) {
@@ -807,7 +797,6 @@ int main() {
     ADC_Driver.begin();
     ADC_Driver.enableInterrupt();
 
-    ADCSRB &= ~0x07;                    // ADTS = 000 — true free running
     ADC_Driver.beginFreeRunning(6);     // light sensor on A6
     sei();
 
@@ -980,15 +969,6 @@ if (ADC_Driver.conversionComplete()) {
     process(ADC_Driver.resultFreeRunning());
     ADC_Driver.clearFlag();              // arm for next conversion
 }
-```
-
-### `beginFreeRunning()` and ADTS register state
-
-As noted in the [API Reference](#beginFreeRunning), the SDK implementation sets ADTS0=1 (Analog Comparator trigger) rather than clearing all ADTS bits for free-running (ADTS=000). Clear ADTS manually before calling `beginFreeRunning()` for guaranteed free-running behavior:
-
-```cpp
-ADCSRB &= ~0x07;                        // ADTS = 000 → free running
-ADC_Driver.beginFreeRunning(7);
 ```
 
 ### Power consumption
